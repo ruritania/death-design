@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Death by Design</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script>
+$(function () {
+
+    $('#container').highcharts({
+
+        chart: {
+            type: 'scatter',
+            inverted: true,
+			backgroundColor: 'none',
+			color: '#333333',
+            marginRight: 0,
+            spacingLeft: 0
+        },
+
+        legend: {
+			enabled: true
+        },
+
+        title: {
+            text: 'Coffee machine',
+            style: {
+                color: '#333333',
+                fontWeight: 'bold',
+				fontFamily: 'Roboto Slab',
+					fontSize: '24px'
+            }
+        },
+
+        xAxis: {
+            categories: ['Cappuccino', 'White Americano', 'Flat White', 'Hot Water', 'Double Espresso', 'Latte'],
+			lineColor: 'none',
+			tickColor: 'none',
+			gridLineColor: '#333333',
+			gridLineWidth: 1,
+			gridLineDashStyle: 'Dot',
+            labels: {
+                style: {
+					color: '#333333',
+					fontFamily: 'Roboto Slab',
+					fontSize: '12px'
+                }
+            }
+        },
+
+        yAxis: {
+            title: {
+                text: 'Time of day',
+                style: {
+					color: '#333333',
+					fontFamily: 'Roboto Slab',
+					fontSize: '18px'
+                }
+            },
+			opposite: true,
+			gridLineColor: 'none',
+            type: 'datetime',
+            min: Date.UTC(2015, 5, 27,8,0,0),
+			max: Date.UTC(2015, 5, 28,12,0,0),
+            tickInterval: 4 * 3600 * 1000,
+			tickColor: '#CCCCCC',
+			minorTickInterval: 4 * 3600 *1000,
+			minorTickColor: 'none',
+			minorGridLineColor: '#CCCCCC',
+            labels: {
+                style: {
+					color: '#333333',
+					fontFamily: 'Roboto Slab',
+					fontSize: '12px'
+                }
+            }
+        },
+
+        tooltip: {
+			formatter: function () {
+				console.log(this);
+				return '<b>' + this.x + '</b> made at <b>' + Highcharts.dateFormat('%H:%M', this.point.y) + '</b>';
+			},
+			style: {
+				color: '#333333',
+				fontFamily: 'Roboto Slab',
+				fontSize: '12px'
+			}
+        },
+
+        plotOptions: {
+            scatter: {
+				color: '#333333',
+                marker: {
+					radius: 6,
+					symbol: 'circle'
+                },
+                dataLabels: {
+                    enabled: true,
+					formatter: function () {
+						if (new Date().setHours(0, 0, 0, 0) !== new Date(this.y).setHours(0, 0, 0, 0)) return '<span style="color:#333333">' + Highcharts.dateFormat('%H:%M', this.y) + '</span>';
+						else return '';
+					},
+					color: '#333333',
+					style: {
+						fontFamily: 'Roboto Slab',
+						textShadow: '',
+						color: '#333333',
+						fontSize: '12px'
+					}
+                }
+            }
+        },
+
+        legend: {
+            enabled: false,
+			itemStyle: {
+				fontFamily: 'Roboto Slab',
+				textShadow: '',
+				color: '#333333',
+				fontSize: '12px'
+			}
+        },
+
+        series: [{
+            name: 'One',
+            color: 'rgba(51, 51, 51, 1)',
+            data: [
+                Date.UTC(2015,5,27,9,11,21),Date.UTC(2015,5,27,9,44,39),Date.UTC(2015,5,27,9,58,08),Date.UTC(2015,5,27,9,59,45),Date.UTC(2015,5,27,10,09,56)
+            ]
+        },{
+            name: 'Two',
+            color: 'rgba(51, 51, 51, 1)',
+            data: [
+                Date.UTC(2015,5,27,12,51,9),Date.UTC(2015,5,27,15,23,27),[],Date.UTC(2015,5,27,16,4,56),Date.UTC(2015,5,27,14,31,34)
+            ]
+        },{
+            name: 'Three',
+            color: 'rgba(51, 51, 51, 1)',
+            data: [
+                [],[],[],Date.UTC(2015,5,27,16,7,9),Date.UTC(2015,5,27,18,16,23),Date.UTC(2015,5,27,18,17,6)
+            ]
+        },{
+            name: 'Four',
+            color: 'rgba(51, 51, 51, 1)',
+            data: [
+                Date.UTC(2015,5,28,9,14,15),Date.UTC(2015,5,28,9,42,43),Date.UTC(2015,5,28,9,51,37),Date.UTC(2015,5,28,9,56,23),Date.UTC(2015,5,28,10,09,31)
+            ]
+        },{
+            name: 'Five',
+            color: 'rgba(51, 51, 51, 1)',
+            data: [
+                Date.UTC(2015,5,28,10,46,37),Date.UTC(2015,5,28,10,47,03),Date.UTC(2015,5,28,10,47,49),Date.UTC(2015,5,28,10,48,19),Date.UTC(2015,5,28,10,48,54)
+            ]
+        }]
+
+    });
+
+});
+</script>
+<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300' rel='stylesheet' type='text/css'>
+<style>
+	body
+	{
+		font-family: 'Roboto Slab', serif;
+	}
+	#death-line
+	{
+		position: absolute;
+		left: 390px;
+		top: 165px;
+		width: 1px;
+		height: 630px;
+		background-color: #FF6600;
+	}
+	#skull
+	{
+		position: absolute;
+		left: 365px;
+		top: 115px;
+	}
+</style>
+</head>
+
+<body>
+	<div id="death-line"></div>
+    <div id="skull"><img src="skull-01.png" width="52" height="52" alt="time of death"/></div>
+	<div id="container" style="width:800px; height:800px;"></div>
+</body>
+</html>
